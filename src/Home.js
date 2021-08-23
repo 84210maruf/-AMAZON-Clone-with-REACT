@@ -14,22 +14,53 @@ function Home() {
 
         <div className="home__row">
           <Product 
+          id='10'
+          title={'Product title from props'} 
+          image={require('./images/product01.jpg').default} 
+          price={19.9} 
+          rating={5} 
+          />
+          <Product 
+          id='20'
+          title={'Product Title'} 
+          image={require('./images/product02.png').default} 
+          price={19.9} 
+          rating={5} 
+          />
+        </div>
+
+        <div className="home__row">
+          <Product 
+          id='20'
+          title={'Product Title'} 
+          image={require('./images/product03.jpg').default} 
+          price={19.9} 
+          rating={5} 
+          />
+          <Product 
+          id='20'
+          title={'Product Title'} 
+          image={require('./images/product05.jpeg').default} 
+          price={19.9} 
+          rating={5} 
+          />
+          <Product 
+          id='20'
           title={'Product Title'} 
           image={require('./images/product01.jpg').default} 
           price={19.9} 
           rating={5} 
           />
-          <Product />
         </div>
 
         <div className="home__row">
-          <Product />
-          <Product />
-          <Product />
-        </div>
-
-        <div className="home__row">
-        <Product />
+          <Product 
+          id='20'
+          title={'Product Title'} 
+          image={require('./images/product06.jpg').default} 
+          price={19.9} 
+          rating={5} 
+          />
         </div>
           
       </div>
