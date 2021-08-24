@@ -3,9 +3,15 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import React from "react";
 import { Link } from 'react-router-dom';
 import "./Header.css";
+import { useStateValue } from './StateProvider';
 
 
 function Header() {
+
+  // basket.length is the Ordered products List number
+  // basket?.length is also work with no error
+  const [{basket}, dispatch] = useStateValue();
+  
   return (
     <div className="header">
       
@@ -43,7 +49,7 @@ function Header() {
         <Link to='/checkout'>
         <div className="header__optionBusket">
           <ShoppingBasketIcon />
-          <span className='header__optionLineTwo header__basketCount'>0</span>
+          <span className='header__optionLineTwo header__basketCount'>{basket.length}</span>
         </div>
         </Link>
       </div>
