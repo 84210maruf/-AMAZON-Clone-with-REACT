@@ -1,6 +1,6 @@
 import React from "react";
 import "./CheckoutProduct.css";
-import {useStateValue} from './StateProvider';
+import { useStateValue } from './StateProvider';
 
 function CheckoutProduct({ id, image, title, price, rating }) {
 
@@ -11,10 +11,6 @@ function CheckoutProduct({ id, image, title, price, rating }) {
         type: 'REMOVE_FROM_BASKET',
         item:{
           id:id,
-          title: title,
-          price: price,
-          rating: rating,
-          image: image,
         }
       })
     };
