@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
+/*eslint-disable jsx-a11y/alt-text */
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { auth } from './firebase';

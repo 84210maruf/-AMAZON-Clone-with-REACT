@@ -2,15 +2,20 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import React from "react";
 import { Link } from 'react-router-dom';
+import { auth } from './firebase';
 import "./Header.css";
 import { useStateValue } from './StateProvider';
 
 
 function Header() {
 
-  // basket.length is the Ordered products List number
-  // basket?.length is also work with no error
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket, user}, dispatch] = useStateValue();
+
+  const handleAuthentication = () => {
+    if(user) {
+      auth.signOut();
+    }
+  }
   
   return (
     <div className="header">
@@ -34,10 +39,10 @@ function Header() {
       </div>
 
       <div className="header__nav">
-        <Link to='/login'>
-          <div className="header__option">
-            <span className="header__optionLineOne">Hallow</span>
-            <span className="header__optionLineTwo"> SignIn</span>
+        <Link to={!user && '/login'}>
+          <div onClick={handleAuthentication} className="header__option">
+            <span className="header__optionLineOne">Hallow </span>
+            <span className="header__optionLineTwo">{user ?'Sign Out':'Sign In'}</span>
           </div>
         </Link>
         <div className="header__option">
