@@ -25,9 +25,10 @@
 }
 
 .checkoutProduct__info > button {
-  background: rgb(250, 177, 41);
+  background: rgb(228, 158, 29);
   border: 1px solid;
   margin-top: 10px;
   border-color: rgb(148, 127, 58);
   color: black;
+  border-radius: 2px;
 }

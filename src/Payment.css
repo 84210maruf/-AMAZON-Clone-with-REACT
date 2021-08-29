@@ -25,3 +25,11 @@
 .payment__details {
   flex: 0.8;
 }
+.payment__priceContainer > p {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bolder;
+}
+.payment__address > p a {
+  text-decoration: none;
+}

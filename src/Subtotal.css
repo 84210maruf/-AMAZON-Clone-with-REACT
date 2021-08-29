@@ -9,6 +9,11 @@
   border: 1px solid #c5bebe;
   border-radius: 3px;
 }
+.subtotal > p {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bolder;
+}
 .subtotal__gift {
   display: flex;
   align-items: 5px;

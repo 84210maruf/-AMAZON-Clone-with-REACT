@@ -1,5 +1,6 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import CurrencyFormat from 'react-currency-format';
 import { Link } from "react-router-dom";
 import CheckoutProduct from "./CheckoutProduct";
@@ -13,11 +14,33 @@ function Payment() {
   const stripe = useStripe();
   const elements = useElements();
 
+  const [succeeded, setSucceeded] = useState(false);
+  const [processing, setProcessing] = useState('');
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState(true);
 
-  const handleSubmit = e => {
+
+  useEffect(() => {
+    //generate a special stripe secrete whice allows us charge a customer
+    const getClientSecret = async () => {
+      const response = await axios({
+        method: 'post',
+        // Stripe expects the total in a currencies
+        url: `/payments/create?total=${getBasketTotal(basket)}`
+      })
+    }
+
+    getClientSecret();
+  }, [basket])
+
+
+  const handleSubmit = async (event) => {
+
     //Do all fancy Stripe Stuff...
+    event.preventDefault();
+    setProcessing(true);
+    //const payload = await stripe  
 
   }
 
@@ -38,7 +61,11 @@ function Payment() {
             <h3>Delivery Address </h3>
           </div>
           <div className="payment__address">
-            <p>{user?.email}</p>
+            <p>
+              {!user ? <Link to='/login'>
+              Signin Your Amazon Account
+              </Link> : user.email}
+            </p>
             <p>Suza, ullapara</p>
             <p>Dhaka, BD</p>
           </div>
@@ -84,10 +111,15 @@ function Payment() {
                         value={getBasketTotal(basket)}
                         displayType={"text"}
                         thousandSeparator={true}
-                        prefix={"€ "}
-                        suffix={" euro"}
+                        prefix={"$ "}
+                        suffix={" USD"}
                     />
+                    <button 
+                    disabled={processing || disabled || succeeded || error}>
+                      <span onClick={handleSubmit}>{processing ? <p>Processing..</p> : 'Buy Now'}</span>
+                    </button>
                 </div>
+                {error && <div>{error}</div>}
             </form>
         
           </div>
