@@ -11,6 +11,11 @@
   min-width: 100px;
   background-color: rgb(255, 255, 255);
   z-index: 1;
+  transition: 0.5s;
+}
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 2px 3px rgb(223, 222, 238);
 }
 .product_info {
   height: 100px;

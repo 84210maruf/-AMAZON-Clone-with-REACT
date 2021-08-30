@@ -2,6 +2,12 @@
   display: flex;
   margin-bottom: 20px;
   margin-top: 20px;
+  transition: 0.4s;
+}
+.checkoutProduct:hover {
+  transform: scale(1.04);
+  background: rgb(222, 241, 228);
+  box-shadow: 2px 3px rgb(226, 231, 233);
 }
 .checkoutProduct > img {
   margin-top: -12px;

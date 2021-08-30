@@ -1,15 +1,18 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CurrencyFormat from 'react-currency-format';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import axios from "./axios";
 import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { getBasketTotal } from './reducer';
 import { useStateValue } from "./StateProvider";
 
+
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
+
+  const history = useHistory();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -27,8 +30,9 @@ function Payment() {
       const response = await axios({
         method: 'post',
         // Stripe expects the total in a currencies
-        url: `/payments/create?total=${getBasketTotal(basket)}`
-      })
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+      });
+      setClientSecret(response.data.clientSecret);
     }
 
     getClientSecret();
@@ -36,18 +40,28 @@ function Payment() {
 
 
   const handleSubmit = async (event) => {
-
     //Do all fancy Stripe Stuff...
     event.preventDefault();
     setProcessing(true);
-    //const payload = await stripe  
-
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement)
+      }
+    }).then(({ paymentIntent }) => {
+      // paymentIntent = payment confirmetion
+      setSucceeded(true);
+      setError(null);
+      setProcessing(false);
+      history.replace('/orders');
+    })
   }
+
 
   const handleChange = event => {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : '');
   }
+
 
   return (
     <div className="payment">
@@ -116,7 +130,7 @@ function Payment() {
                     />
                     <button 
                     disabled={processing || disabled || succeeded || error}>
-                      <span onClick={handleSubmit}>{processing ? <p>Processing..</p> : 'Buy Now'}</span>
+                      <span /*onClick={handleSubmit}*/>{processing ? <p>Processing..</p> : 'Buy Now'}</span>
                     </button>
                 </div>
                 {error && <div>{error}</div>}
