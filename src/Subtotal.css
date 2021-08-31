@@ -32,3 +32,7 @@
   border-color: #d3a10a;
   color: black;
 }
+.subtotal > button:hover {
+  color: white;
+  background: black;
+}

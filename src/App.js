@@ -1,7 +1,6 @@
 // Elements & loaadSripe is for payment Proccess
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-
 import { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -12,6 +11,7 @@ import Home from "./Home";
 import Login from "./Login";
 import Payment from "./Payment";
 import { useStateValue } from "./StateProvider";
+
 
 const promise = loadStripe(
   //This API keys from stripe.com

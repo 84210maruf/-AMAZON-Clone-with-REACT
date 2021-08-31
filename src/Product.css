@@ -15,7 +15,8 @@
 }
 .product:hover {
   transform: scale(1.05);
-  box-shadow: 2px 3px rgb(223, 222, 238);
+  background: rgb(222, 241, 228);
+  box-shadow: 2px 4px rgb(223, 222, 238);
 }
 .product_info {
   height: 100px;
@@ -44,4 +45,7 @@
   border-color: rgb(148, 127, 58);
   color: black;
   border-radius: 1px;
+}
+.product > button:hover {
+  background-color: white;
 }

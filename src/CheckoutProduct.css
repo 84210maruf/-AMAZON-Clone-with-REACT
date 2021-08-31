@@ -38,3 +38,6 @@
   color: black;
   border-radius: 2px;
 }
+.checkoutProduct__info > button:hover {
+  background: white;
+}

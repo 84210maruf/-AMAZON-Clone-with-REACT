@@ -42,6 +42,9 @@
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
+.header__searchIcon:hover {
+  color: white;
+}
 .header__nav {
   display: flex;
   justify-content: space-evenly;
@@ -52,6 +55,7 @@
   margin-right: 10px;
   margin-left: 10px;
   color: white;
+  transition: 0.6s;
 }
 .header__optionLineOne {
   font-size: 12px;
@@ -60,6 +64,10 @@
   font-size: 14px;
   font-weight: 800;
 }
+.header__optionLineTwo:hover {
+  transform: scale(1.2);
+  color: rgb(211, 150, 60);
+}
 .header__optionBusket {
   color: whitesmoke;
   display: flex;
@@ -67,4 +75,8 @@
 }
 .header__basketCount {
   margin: 0 10px;
+}
+.header__optionBusket:hover {
+  transform: scale(1.2);
+  color: rgb(211, 150, 60);
 }
