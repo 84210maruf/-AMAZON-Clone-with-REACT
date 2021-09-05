@@ -47,5 +47,6 @@
   border-radius: 1px;
 }
 .product > button:hover {
-  background-color: white;
+  color: white;
+  background: rgb(182, 129, 30);;
 }

@@ -39,5 +39,8 @@
   border-radius: 2px;
 }
 .checkoutProduct__info > button:hover {
-  background: white;
+  background: rgb(243, 17, 9);
+  border-color: rgb(168, 164, 159);
+  font-size: 14px;
+  color: white;
 }

@@ -1,14 +1,15 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "./axios";
 import React, { useEffect, useState } from "react";
 import CurrencyFormat from "react-currency-format";
 import { Link, useHistory } from "react-router-dom";
+import axios from "./axios";
 import CheckoutProduct from "./CheckoutProduct";
 import "./Payment.css";
 import { getBasketTotal } from "./reducer";
 import { useStateValue } from "./StateProvider";
 
 function Payment() {
+
   const [{ basket, user }, dispatch] = useStateValue();
 
   const history = useHistory();
@@ -26,15 +27,15 @@ function Payment() {
     //generate a special stripe secrete whice allows us charge a customer
     const getClientSecret = async () => {
       const response = await axios({
-        method: "post",
-        // Stripe expects the total in a currencies subunits
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
+        method: 'post',
+        url: `/payments/create?total=${getBasketTotal(basket)*100}`,
       });
-      setClientSecret(response.data.clientSecret);
+      setClientSecret(getBasketTotal(basket)*100);
     };
-
+    
     getClientSecret();
   }, [basket]);
+  console.log(clientSecret)
 
 
   const handleSubmit = async (event) => {
@@ -63,6 +64,7 @@ function Payment() {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
+
 
   return (
     <div className="payment">

@@ -35,4 +35,5 @@
 .subtotal > button:hover {
   color: white;
   background: black;
+  border-color: rgb(179, 174, 170);
 }
