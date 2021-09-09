@@ -28,13 +28,14 @@ function Payment() {
     const getClientSecret = async () => {
       const response = await axios({
         method: 'post',
-        url: `/payments/create?total=${getBasketTotal(basket)*100}`,
+        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
       });
-      setClientSecret(getBasketTotal(basket)*100);
+      setClientSecret(response.data.clientSecret);
     };
     
     getClientSecret();
   }, [basket]);
+  
   console.log(clientSecret)
 
 
@@ -44,8 +45,7 @@ function Payment() {
     event.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
+    const payload = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
           card: elements.getElement(CardElement),
         },

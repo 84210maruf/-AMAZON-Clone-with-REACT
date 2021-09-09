@@ -4,9 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 // Secrate kay from developer/APIs [stripe.com]
-const stripe = require("stripe")(
-    "sk_test_51JU4olSJX1KsV9pIdIY3TIhvFq3v3ivZtOvWuwPCYMHA5x3gAkTeSNdqE8kVbEE19VPFXkjr82LmobgxZrLo74vy00SV2e0wn4"
-);
+const stripe = require("stripe")("sk_test_51JU4olSJX1KsV9pIdIY3TIhvFq3v3ivZtOvWuwPCYMHA5x3gAkTeSNdqE8kVbEE19VPFXkjr82LmobgxZrLo74vy00SV2e0wn4")
 
 // APIs
 
@@ -20,7 +18,7 @@ app.use(express.json());
 // API routes
 app.get("/", (request, response) => response.status(200).send("hallow World"));
 
-app.get("/payments/create", async (request, response) => {
+app.post("/payments/create", async (request, response) => {
 
     const total = request.query.total;
 
@@ -33,8 +31,8 @@ app.get("/payments/create", async (request, response) => {
     // OK & Created
     response.status(201).send({
         clientSecret: paymentIntent.client_secret,
-    });
-})
+    })
+});
 
 // Listen command
 exports.api = functions.https.onRequest(app);
