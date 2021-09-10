@@ -51,7 +51,7 @@ function Payment() {
         },
       })
       .then(({ paymentIntent }) => {
-        // paymentIntent = payment confirmetion
+        //paymentIntent = payment confirmetion
 
         setSucceeded(true);
         setError(null);

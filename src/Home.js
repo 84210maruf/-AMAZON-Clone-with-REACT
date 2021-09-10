@@ -17,14 +17,14 @@ function Home() {
           id='10'
           title={'Product title from props'} 
           image={require('./images/product01.jpg').default} 
-          price={19.9} 
+          price={19.99} 
           rating={5} 
           />
           <Product 
           id='20'
           title={'Product Title lorem ipsum lorem ipsum lorem ipsum lorem ipsum'} 
           image={require('./images/product02.png').default} 
-          price={19.9} 
+          price={19.99} 
           rating={5} 
           />
         </div>
@@ -34,21 +34,21 @@ function Home() {
           id='30'
           title={'Product Title  lorem ipsum lorem ipsum lorem ipsum lorem ipsum'} 
           image={require('./images/product03.jpg').default} 
-          price={19.9} 
+          price={19.99} 
           rating={5} 
           />
           <Product 
           id='40'
           title={'Product Title  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum'} 
           image={require('./images/product05.jpeg').default} 
-          price={19.9} 
+          price={19.99} 
           rating={5} 
           />
           <Product 
           id='50'
           title={'Product Title  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum'} 
           image={require('./images/product01.jpg').default} 
-          price={19.9} 
+          price={19.99} 
           rating={5} 
           />
         </div>
@@ -58,7 +58,7 @@ function Home() {
           id='60'
           title={'Product Title'} 
           image={require('./images/product06.jpg').default} 
-          price={19.9} 
+          price={19.99} 
           rating={5} 
           />
         </div>

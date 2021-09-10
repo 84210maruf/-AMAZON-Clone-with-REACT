@@ -5,7 +5,7 @@ const cors = require("cors");
 
 // Secrate kay from developer/APIs [stripe.com]
 const stripe = require("stripe")(
-  "sk_test_51JU4olSJX1KsV9pIdIY3TIhvFq3v3ivZtOvWuwPCYMHA5x3gAkTeSNdqE8kVbEE19VPFXkjr82LmobgxZrLo74vy00SV2e0wn4"
+  "sk_test_51JY2aCIoLD5rwfnZSWQ9a48HOsMHhF54kk1wyL7xedWCYwSdK6wtQ7gaa4aUAGLJQp0WBHKCEQtgO8eKaSyinwut00eKFqchxY"
 );
 
 // APIs
@@ -18,15 +18,16 @@ app.use(cors({ origin: true }));
 app.use(express.json());
 
 // API routes
-app.get("/", (request, response) => response.status(200).send("hallow World"));
+app.get("/", (request, response) => response.status(200).send("This is the BACKEND & Insider Express.js ....CLOUD FUNCTION......"));
 
 app.post("/payments/create", async (request, response) => {
-  const total = request.query.total;
+
+  const total = Math.round(request.query.total);
 
   console.log("Payment Rqst Recieved BOOM!!! for this amount", total);
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: total, //subunit of the curency
+    amount: total,
     currency: "usd",
   });
   // OK & Created
