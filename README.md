@@ -1,3 +1,11 @@
+
+
+"npm --prefix \"$RESOURCE_DIR\" run lint"
+
+"npm --prefix \"%RESOURCE_DIR%\" run lint"
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
