@@ -56,7 +56,7 @@ function Payment() {
         //keep users payment info & orders in firestore DB
         db
         .collection('users')
-        .doc(user?.id)
+        .doc(user?.email)
         .collection('orders')
         .doc(paymentIntent.id)
         .set({

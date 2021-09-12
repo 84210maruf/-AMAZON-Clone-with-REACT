@@ -37,3 +37,17 @@
 .payment__address > p a {
   text-decoration: none;
 }
+.payment__details > form {
+  max-width: 400px;
+}
+.payment__details > form > div > button {
+  background: rgb(236, 173, 56);
+  border-radius: 2px;
+  width: 100%;
+  height: 30px;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #d3a10a;
+  margin-top: 10px;
+  color: black;
+}
